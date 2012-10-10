@@ -1,6 +1,5 @@
-# Yumrepo
-
-## Description
+chef-yumrepo
+============
 
 Manages Yum Repository files in /etc/yum.repos.d on CentOS / RHEL 5.x.
 
