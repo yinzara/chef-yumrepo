@@ -35,7 +35,7 @@ yum_repository "elrepo-kernel" do
   key node['repo']['elrepo']['key']
   url node['repo']['elrepo']['kernel_url']
   mirrorlist true
-  enabled false
+  enabled 0
   action :add
 end
 
@@ -44,6 +44,6 @@ yum_repository "elrepo-extras" do
   key node['repo']['elrepo']['key']
   url node['repo']['elrepo']['extras_url']
   mirrorlist true
-  enabled false
+  enabled 0
   action :add
 end
