@@ -1,11 +1,11 @@
-# Yumrepo [![Build Status](https://secure.travis-ci.org/atomic-penguin/cookbook-yumrepo.png?branch=master)](http://travis-ci.org/atomic-penguin/cookbook-yumrepo)
+# Yumrepo
 
 ## Description
 
 Manages Yum Repository files in /etc/yum.repos.d on CentOS / RHEL 5.x.
 
 Yum repositories included in this recipe:
-EPEL, ELFF, Dell OMSA, Dell Community, Dell Firmware, VMware Tools, and more...
+EPEL, ELFF, Dell OMSA, Dell Community, Dell Firmware, VMware Tools, Remi, Atomic and more...
 
 ## Requirements
 
@@ -14,8 +14,8 @@ It has not been tested on other platforms.  It probably will
 not work with RHEL 4 or CentOS 4, especially if you have not
 taken action to manually install yum on that platform.
 
-## Notes
 -----
+## Notes
 
 RHEL 6 support is fairly well tested in the dell, vmware-tools, and
 epel recipes.  Let me know if you find a platform 6 bug, related to
@@ -62,7 +62,7 @@ Includes recipes:
   - firmware / Convenient but unsupported by Dell
   * See http://linux.dell.com for more info
 
-- repo[:dell][:download_firmware] = true||false
+- repo['dell']['download_firmware'] = true||false
   * disables/enables community/firmware repositories in dell recipe
   * OMSA (hardware) repository will detect Dell hardware platform and
     enable itself, dynamically. It is not affected by this attribute.
@@ -71,6 +71,25 @@ Includes recipes:
 
 - Provides repo files for rbel.frameos.org
   * Ruby and Opscode Chef packages for RHEL distros 
+
+### yumrepo::remi
+
+- Provides repo files for rpms.famillecollet.com
+  * MySQL bleeding-edge, PHP bleeding-edge etc
+
+### yumrepo::rpmforge
+
+- Provides repo files for Dag Wieers repository
+  * Many many useful tools and packages
+
+### yumrepo::atomic
+
+- Provides repo files for Atomic Rocket Turtle
+  * Many many useful packages, stable and very well tested, ranging from PHP/MySQL to SpamAssassin etc.
+
+### yumrepo::elrepo
+- Provides repo files for the ELRepo repository
+  * Many useful system packages, usually ships the latest available Linux kernel in a fully-functioning EL configuration
 
 ### yumrepo::vmware-tools-upgrade
 
@@ -94,9 +113,8 @@ Includes recipes:
 
 #### Attributes
 
-- repo[:vmware][:release] (ESX version number, default 5.0u1)
-  * This is used to determine the correct URL in the
-    VMware RHEL5/CentOS repository.
+- repo['vmware']['release'] (ESX version number, default 5.0u1)
+  * This is used to determine the correct URL in the VMware RHEL5/CentOS repository.
 
 ### yumrepo::annvix
 
@@ -126,6 +144,9 @@ Includes recipes:
 - Jenkins CI yum repository
 
 ## License and Author
+
+Author:: Panagiotis Papadomitsos
+Copyright:: 2012
 
 Author:: Eric G. Wolfe
 Copyright:: 2010-2011

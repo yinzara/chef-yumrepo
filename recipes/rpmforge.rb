@@ -1,8 +1,8 @@
 #
 # Cookbook Name:: yumrepo
-# Recipe:: default 
+# Recipe:: rpmforge
 #
-# Copyright 2010, Eric G. Wolfe
+# Copyright 2012, Panagiotis Papadomitsos
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,5 +17,15 @@
 # limitations under the License.
 #
 
-include_recipe "yum::yum"
-include_recipe "yumrepo::epel"
+yum_key node['repo']['rpmforge']['key'] do
+  url  node['repo']['rpmforge']['key_url']
+  action :add
+end
+
+yum_repository "rpmforge" do
+  description "RHEL $releasever - RPMforge.net - dag"
+  key node['repo']['rpmforge']['key']
+  url node['repo']['rpmforge']['url']
+  mirrorlist true
+  action :add
+end

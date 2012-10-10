@@ -1,8 +1,8 @@
 #
 # Cookbook Name:: yumrepo
-# Recipe:: default 
+# Attributes:: elrepo 
 #
-# Copyright 2010, Eric G. Wolfe
+# Copyright 2012, Panagiotis Papadomitsos
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,5 +17,8 @@
 # limitations under the License.
 #
 
-include_recipe "yum::yum"
-include_recipe "yumrepo::epel"
+default['repo']['elrepo']['base_url'] = "http://elrepo.org/mirrors-elrepo.el#{platform_version.to_i}"
+default['repo']['elrepo']['kernel_url'] = "http://elrepo.org/mirrors-elrepo-kernel.el#{platform_version.to_i}"
+default['repo']['elrepo']['extras_url'] = "http://elrepo.org/mirrors-elrepo-extras.el#{platform_version.to_i}"
+set['repo']['elrepo']['key'] = "RPM-GPG-KEY-elrepo.org"
+default['repo']['elrepo']['key_url'] = "http://elrepo.org/RPM-GPG-KEY-elrepo.org"

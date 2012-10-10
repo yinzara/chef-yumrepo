@@ -1,8 +1,8 @@
 #
 # Cookbook Name:: yumrepo
-# Recipe:: default 
+# Attributes:: remi 
 #
-# Copyright 2010, Eric G. Wolfe
+# Copyright 2011, Eric G. Wolfe 
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,5 +17,6 @@
 # limitations under the License.
 #
 
-include_recipe "yum::yum"
-include_recipe "yumrepo::epel"
+default['repo']['remi']['url'] = "http://rpms.famillecollet.com/enterprise/$releasever/remi/mirror"
+set['repo']['remi']['key'] = "RPM-GPG-KEY-remi"
+default['repo']['remi']['key_url'] = "http://rpms.famillecollet.com/RPM-GPG-KEY-remi"

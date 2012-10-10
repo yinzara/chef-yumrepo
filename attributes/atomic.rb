@@ -1,8 +1,8 @@
 #
 # Cookbook Name:: yumrepo
-# Recipe:: default 
+# Attributes:: atomic 
 #
-# Copyright 2010, Eric G. Wolfe
+# Copyright 2012, Panagiotis Papadomitsos
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,5 +17,6 @@
 # limitations under the License.
 #
 
-include_recipe "yum::yum"
-include_recipe "yumrepo::epel"
+default['repo']['atomic']['url'] = "http://www.atomicorp.com/mirrorlist/atomic/centos-$releasever-$basearch"
+set['repo']['atomic']['key'] = "RPM-GPG-KEY.art"
+default['repo']['atomic']['key_url'] = "http://www.atomicorp.com/RPM-GPG-KEY.art.txt"

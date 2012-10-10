@@ -1,8 +1,8 @@
 #
 # Cookbook Name:: yumrepo
-# Recipe:: default 
+# Recipe:: remi 
 #
-# Copyright 2010, Eric G. Wolfe
+# Copyright 2012, Panagiotis Papadomitsos
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,5 +17,15 @@
 # limitations under the License.
 #
 
-include_recipe "yum::yum"
-include_recipe "yumrepo::epel"
+yum_key node['repo']['remi']['key'] do
+  url  node['repo']['remi']['key_url']
+  action :add
+end
+
+yum_repository "remi" do
+  description "Les RPM de remi pour Enterprise Linux $releasever - $basearch"
+  key node['repo']['remi']['key']
+  url node['repo']['remi']['url']
+  mirrorlist true
+  action :add
+end
