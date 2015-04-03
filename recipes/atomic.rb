@@ -20,6 +20,6 @@
 yum_repository "atomic" do
   description "CentOS / Red Hat Enterprise Linux $releasever - atomicrocketturtle.com"
   gpgkey node['repo']['atomic']['key_url']
-  baseurl node['repo']['atomic']['url']
+  mirrorlist node['repo']['atomic']['url']
   action :add
 end
