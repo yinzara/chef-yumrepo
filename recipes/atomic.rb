@@ -17,15 +17,9 @@
 # limitations under the License.
 #
 
-yum_key node['repo']['atomic']['key'] do
-  url  node['repo']['atomic']['key_url']
-  action :add
-end
-
 yum_repository "atomic" do
   description "CentOS / Red Hat Enterprise Linux $releasever - atomicrocketturtle.com"
-  key node['repo']['atomic']['key']
-  url node['repo']['atomic']['url']
-  mirrorlist true
+  gpgkey node['repo']['atomic']['key_url']
+  baseurl node['repo']['atomic']['url']
   action :add
 end
